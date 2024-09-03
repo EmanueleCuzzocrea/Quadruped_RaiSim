@@ -48,7 +48,7 @@ https://github.com/user-attachments/assets/7d42453e-b7d4-481c-a656-58a2293191f1
 
 ### Autonomous gait transition (aerial_view)
 
-https://github.com/user-attachments/assets/7207c965-dd05-4853-8bec-8881d7085731
+https://github.com/user-attachments/assets/5ea52727-b875-4bb2-a231-7a6d2cfe3ed6
 
 
 
