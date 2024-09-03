@@ -10,7 +10,7 @@ ANYbotics was trained using the **Raisim simulator**.
 
 ## Reward Machines for Quadruped Locomotion
 Reward Machines can be used to specify the sequence of foot contacts required to perform a specific gait.
-So that, in our case we can introduce the variable $P = \left{PFL,PFR,PBL,PBR\right}$, where $p \in P$ is a Boolean variable,
+So that, in our case we can introduce the variable $P = \{{PFL,PFR,PBL,PBR\}}$, where $p \in P$ is a Boolean variable,
 indicating whether the front-left (FL), front-right (FR), back left (BL), and back-right (BR) feet are in contact with the ground.
 
 ### Trot gait
