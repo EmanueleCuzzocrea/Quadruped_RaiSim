@@ -1,14 +1,17 @@
 # Autonomous Gait Transitions
-This technical report presents a simple framework for managing dynamic gait transitions for a quadruped robot.
+This technical report presents a simple framework for managing dynamic **gait transitions** for a quadruped robot.
 Controlling a legged robot with different gaits is a fundamental problem, which reinforcement learning techniques are
-successfully addressing. Another very important aspect concerns how and when to perform transitions between gaits
+successfully addressing. Another very important aspect concerns **how and when** to perform transitions between gaits
 completely autonomously by the robot, thus without requiring manual switching by an operator. Here, the robot was trained
-to perform different gaits using **reward machines** technique. Meanwhile, a condition based on the **height difference** of the
-four feet, handled by an higher level control system, is used for **automatic gait switching**. The **ANYmal B quadruped** from
+to perform different gaits using **reward machines** technique. Meanwhile, a condition based on the height difference of the
+four feet, handled by an higher level control system, is used for automatic gait switching. The **ANYmal B quadruped** from
 ANYbotics was trained using the **Raisim simulator**.
 
 
 ## Reward Machines for Quadruped Locomotion
+Reward Machines can be used to specify the sequence of foot contacts required to perform a specific gait.
+So that, in our case we can introduce the variable $P = {PFL,PFR,PBL,PBR}$, where $p \in P$ is a Boolean variable,
+indicating whether the front-left (FL), front-right (FR), back left (BL), and back-right (BR) feet are in contact with the ground.
 
 ### Trot gait
 
