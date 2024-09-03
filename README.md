@@ -10,8 +10,9 @@ ANYbotics was trained using the **Raisim simulator**.
 
 ## Reward Machines for Quadruped Locomotion
 Reward Machines can be used to specify the sequence of foot contacts required to perform a specific gait.
-Basically, they add an **extra reward** to the stardard reward used for the locomotion, in order to encourage
-the learning of a specific gait.
+Basically, they use a **finite-state automaton** to represent a specific gait, and they encourages transitions inside it
+by adding an **extra reward** to the stardard reward used for the locomotion. This way, multiple gaits can be learned
+without any specific tuning of the hyperparameters.
 
 ### Trot gait
 
@@ -30,7 +31,7 @@ https://github.com/user-attachments/assets/c5e607b9-fc1b-476d-883e-43e83253da0e
 The individual gaits were trained separately, and no transitions between the gaits were explicitly trained.
 What was done was to make each gait as robust as possible so that the policy switch could be performed instantaneously without the robot falling.
 To make the transitions between different gaits more robust, a methodology was adopted that involves training the
-individual gaits on irregular terrains generated using **Perlin noise**, which changes randomly every 5 iterations (for reducing
+individual gaits on **irregular terrains** generated using **Perlin noise**, which changes randomly every 5 iterations (for reducing
 computational cost), and also applying **external disturbances** to the robot in the form of forces along the x,y,z axes at
 the origin of the base frame. This choice was motivated by the need to improve the robot’s ability to regain control in
 difficult conditions and thus better manage the runtime gait transitions.
@@ -52,7 +53,8 @@ https://github.com/user-attachments/assets/77168623-93bf-45ee-ade3-391b6ae1aafe
 The condition that was developed concerns the height difference of the feet at the moment of contact with the ground. Specifically, a higher-level controller manages four variables, encapsulated in the vector $h = [h_{FL}, h_{FR}, h_{BL}, h_{BR}]$. These variables represent the height of each foot relative to the body frame the last time each foot touched the ground. At each step of the simulation, a check is performed to determine which feet are in contact with the ground. For all feet in contact, the corresponding variable $h_i$ is updated. It is important to note that these variables are not part of the robot's state but are simply necessary for a higher-level controller to perform the policy change.
 
 Now, at each step, the difference between all the values of $h$ is calculated. Since there are only 4 variables, this results in simply $6$ differences, and this computation is done in a straightforward manner with two nested $for$ loops. If this difference is greater than a certain threshold, which we denote by $\alpha$, then a counting variable that we denote by $k$ is incremented by one (or in general by some small number $\varepsilon$). As soon as this counting variable exceeds a certain threshold $\beta$, a gait change is performed. This algorithm is better explained in the following pseudocode
-![image](https://github.com/user-attachments/assets/da999643-ab8d-4c4c-aabc-aa3579aca0c1)
+<img src="https://github.com/user-attachments/assets/da999643-ab8d-4c4c-aabc-aa3579aca0c1" alt="Pseudocode" width="200"/>
+
 
 
 ### Autonomous gait transition
