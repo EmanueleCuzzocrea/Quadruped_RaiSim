@@ -1,4 +1,6 @@
 # Autonomous Gait Transitions
+
+## Overview
 This technical report presents a simple framework for managing dynamic **gait transitions** for a quadruped robot.
 Controlling a legged robot with different gaits is a fundamental problem, which reinforcement learning techniques are
 successfully addressing. Another very important aspect concerns **how and when** to perform transitions between gaits
